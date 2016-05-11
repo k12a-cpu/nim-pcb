@@ -44,12 +44,12 @@ proc parseObjectFlagsString(cstr: cstring): uint32 {.cdecl, exportc: "nimpcb_par
   for word in ($cstr).split(','):
     result = result or parseObjectFlagString(word)
 
-proc decodePCBFlags(x: uint32): set[PCBFlag] =
+proc decodePCBFlags(x: uint32): set[PCBFlag] {.noSideEffect.} =
   for info in pcbFlagInfo:
     if (x and info.binary) != 0:
       result.incl(info.flag)
 
-proc decodeObjectFlags(x: uint32, ctx: ObjectFlagsContext): set[ObjectFlag] =
+proc decodeObjectFlags(x: uint32, ctx: ObjectFlagsContext): set[ObjectFlag] {.noSideEffect.} =
   for info in objectFlagInfo:
     if (x and info.binary) != 0 and ctx in info.validContexts:
       result.incl(info.flag)

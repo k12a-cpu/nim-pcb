@@ -188,58 +188,58 @@ type
     layers: seq[Layer]
     nets: seq[Net]
 
-proc `$`*(x: Dimension): string =
+proc `$`*(x: Dimension): string {.noSideEffect.} =
   formatFloat(float(x) / 100.0, format = ffDecimal, precision = 2) & "mil"
 
-proc `$`*(v: Vector): string =
+proc `$`*(v: Vector): string {.noSideEffect.} =
   "(" & $v.x & ", " & $v.y & ")"
 
-proc `+`*(a, b: Dimension): Dimension =
+proc `+`*(a, b: Dimension): Dimension {.noSideEffect.} =
   Dimension(int(a) + int(b))
 
-proc `-`*(a, b: Dimension): Dimension =
+proc `-`*(a, b: Dimension): Dimension {.noSideEffect.} =
   Dimension(int(a) - int(b))
 
-proc `*`*(a: Dimension, b: int): Dimension =
+proc `*`*(a: Dimension, b: int): Dimension {.noSideEffect.} =
   Dimension(int(a) * b)
 
-proc `*`*(a: int, b: Dimension): Dimension =
+proc `*`*(a: int, b: Dimension): Dimension {.noSideEffect.} =
   Dimension(a * int(b))
 
-proc `/`*(a: Dimension, b: int): Dimension =
+proc `/`*(a: Dimension, b: int): Dimension {.noSideEffect.} =
   Dimension(int(a) / b)
 
-proc `-`*(a: Dimension): Dimension =
+proc `-`*(a: Dimension): Dimension {.noSideEffect.} =
   Dimension(-int(a))
 
-proc `+`*(a, b: Vector): Vector =
+proc `+`*(a, b: Vector): Vector {.noSideEffect.} =
   (x: a.x + b.x, y: a.y + b.y)
 
-proc `-`*(a, b: Vector): Vector =
+proc `-`*(a, b: Vector): Vector {.noSideEffect.} =
   (x: a.x - b.x, y: a.y - b.y)
 
-proc `*`*(a: Vector, b: int): Vector =
+proc `*`*(a: Vector, b: int): Vector {.noSideEffect.} =
   (x: a.x * b, y: a.y * b)
 
-proc `*`*(a: int, b: Vector): Vector =
+proc `*`*(a: int, b: Vector): Vector {.noSideEffect.} =
   (x: a * b.x, y: a * b.y)
 
-proc `/`*(a: Vector, b: int): Vector =
+proc `/`*(a: Vector, b: int): Vector {.noSideEffect.} =
   (x: a.x / b, y: a.y / b)
 
-proc `-`*(a: Vector): Vector =
+proc `-`*(a: Vector): Vector {.noSideEffect.} =
   (x: -a.x, y: -a.y)
 
-proc mils*(x: float): Dimension =
+proc mils*(x: float): Dimension {.noSideEffect.} =
   Dimension(x * 100.0)
 
-proc inches*(x: float): Dimension =
+proc inches*(x: float): Dimension {.noSideEffect.} =
   mils(x * 1000.0)
 
-proc mm*(x: float): Dimension =
+proc mm*(x: float): Dimension {.noSideEffect.} =
   mils(x * 39.3701)
 
-proc cm*(x: float): Dimension =
+proc cm*(x: float): Dimension {.noSideEffect.} =
   mm(x * 10.0)
 
 const defaultPCBWidth* = 10.cm()
