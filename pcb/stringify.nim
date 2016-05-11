@@ -216,7 +216,7 @@ proc rope(lines: seq[Line]): Rope =
   for line in lines:
     result = &[
       result,
-      rope("    Line("),
+      rope("    Line["),
       rope(line.point1),
       rope(" "),
       rope(line.point2),
@@ -225,8 +225,8 @@ proc rope(lines: seq[Line]): Rope =
       rope(" "),
       rope(line.clearance),
       rope(" "),
-      rope(0),
-      rope(")\n"),
+      rope(line.flags),
+      rope("]\n"),
     ]
 
 proc rope(layers: seq[Layer]): Rope =
