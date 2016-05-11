@@ -162,11 +162,16 @@ type
     clearance: Dimension
     flags: set[ObjectFlag]
   
+  Polygon* = tuple
+    flags: set[ObjectFlag]
+    vertices: seq[Vector]
+  
   Layer* = tuple
     number: int
     name: string
     flags: string
     lines: seq[Line]
+    polygons: seq[Polygon]
   
   NetConnection* = tuple
     elementName: string
@@ -308,6 +313,10 @@ proc init*(layer: var Layer) =
   layer.name = ""
   layer.flags = ""
   layer.lines = @[]
+  layer.polygons = @[]
+
+proc initLayer*(): Layer =
+  result.init()
 
 proc init*(conn: var NetConnection) =
   conn.elementName = ""

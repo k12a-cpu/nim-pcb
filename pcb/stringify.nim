@@ -229,6 +229,25 @@ proc rope(lines: seq[Line]): Rope =
       rope("]\n"),
     ]
 
+proc rope(polygons: seq[Polygon]): Rope =
+  for polygon in polygons:
+    result = &[
+      result,
+      rope("    Polygon("),
+      rope(polygon.flags),
+      rope(") (\n"),
+    ]
+    for vertex in polygon.vertices:
+      result = &[
+        result,
+        rope("        ["),
+        rope(vertex.x),
+        rope(" "),
+        rope(vertex.y),
+        rope("]\n"),
+      ]
+    result = result & "    )\n"
+
 proc rope(layers: seq[Layer]): Rope =
   for layer in layers:
     result = &[
@@ -241,6 +260,7 @@ proc rope(layers: seq[Layer]): Rope =
       stringRope(layer.flags),
       rope(") (\n"),
       rope(layer.lines),
+      rope(layer.polygons),
       rope(")\n"),
     ]
 
