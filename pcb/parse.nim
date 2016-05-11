@@ -1,10 +1,11 @@
-{.compile: "lexer_gen.c".}
-{.compile: "parser_gen.c".}
-{.passC: "-Ipcb".}
-
+from os import parentDir
 import strutils
 import tables
 import pcb.types
+
+{.compile: "lexer_gen.c".}
+{.compile: "parser_gen.c".}
+{.passC: ("-I" & parentDir(currentSourcePath())).}
 
 var lineno {.header: "lexer_gen.h", importc: "nimpcb_yylineno".}: int
 
