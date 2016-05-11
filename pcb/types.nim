@@ -230,14 +230,14 @@ proc `/`*(a: Vector, b: int): Vector {.noSideEffect.} =
 proc `-`*(a: Vector): Vector {.noSideEffect.} =
   (x: -a.x, y: -a.y)
 
-proc mils*(x: float): Dimension {.noSideEffect.} =
+proc mil*(x: float): Dimension {.noSideEffect.} =
   Dimension(x * 100.0)
 
 proc inches*(x: float): Dimension {.noSideEffect.} =
-  mils(x * 1000.0)
+  mil(x * 1000.0)
 
 proc mm*(x: float): Dimension {.noSideEffect.} =
-  mils(x * 39.3701)
+  mil(x * 39.3701)
 
 proc cm*(x: float): Dimension {.noSideEffect.} =
   mm(x * 10.0)
