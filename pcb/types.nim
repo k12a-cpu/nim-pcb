@@ -132,6 +132,7 @@ type
     name: string
     number: string
     flags: set[ObjectFlag]
+    thermals: seq[int]
   
   Element* = tuple
     flags: set[ObjectFlag]
@@ -196,7 +197,7 @@ type
     styles: string
     symbols: Table[char, Symbol]
     attributes: Table[string, string]
-    elements: seq[Element]
+    elements: Table[string, Element]
     rats: seq[Rat]
     layers: seq[Layer]
     nets: seq[Net]
@@ -341,7 +342,7 @@ proc init*(pcb: var PCB) =
   pcb.styles = ""
   pcb.symbols = initTable[char, Symbol]()
   pcb.attributes = initTable[string, string]()
-  pcb.elements = @[]
+  pcb.elements = initTable[string, Element]()
   pcb.rats = @[]
   pcb.layers = @[]
   pcb.nets = @[]

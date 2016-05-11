@@ -38,6 +38,16 @@ proc rope(flags: set[ObjectFlag]): Rope =
       words.add(info.text)
   result = stringRope(words.join(","))
 
+proc rope(flags: set[ObjectFlag], thermals: seq[int]): Rope =
+  var words: seq[string] = @[]
+  for info in objectFlagInfo:
+    if info.flag in flags:
+      words.add(info.text)
+  if len(thermals) > 0:
+    for layerNumber in thermals:
+      words.add("thermal(" & $(layerNumber - 1) & "X)")
+  result = stringRope(words.join(","))
+
 proc rope(dir: TextDirection): Rope =
   case dir
   of leftToRight:
@@ -161,12 +171,12 @@ proc rope(pins: seq[Pin]): Rope =
       rope(" "),
       stringRope(pin.number),
       rope(" "),
-      rope(pin.flags),
+      rope(pin.flags, pin.thermals),
       rope("]\n"),
     ]
 
-proc rope(elements: seq[Element]): Rope =
-  for element in elements:
+proc rope(elements: Table[string, Element]): Rope =
+  for element in elements.values():
     result = &[
       result,
       rope("Element["),

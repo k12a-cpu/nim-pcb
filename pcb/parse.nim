@@ -105,7 +105,7 @@ proc processElementStart(flags: uint32, desc, name, value: cstring, hasMark, mar
 
 proc processElementEnd() {.cdecl, exportc: "nimpcb_process_element_end".} =
   # echo "nimpcb_process_element_end"
-  thePCB.elements.add(theElement)
+  thePCB.elements[theElement.name] = theElement
 
 proc processElemElementArc(isAbsolute, x, y, width, height, startAngle, sweepAngle, thickness: int64) {.cdecl, exportc: "nimpcb_process_elem_elementarc".} =
   # echo "nimpcb_process_elem_elementarc"
@@ -176,6 +176,7 @@ proc processElemPin(isAbsolute, x, y, thickness, clearance, mask, drill: int64, 
     name: $name,
     number: $number,
     flags: decodeObjectFlags(flags, ofcPin),
+    thermals: @[],
   ))
 
 proc processFileVersion(version: int64) {.cdecl, exportc: "nimpcb_process_fileversion".} =
