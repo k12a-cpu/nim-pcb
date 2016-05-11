@@ -33,6 +33,7 @@ Flags                   { return WORD_FLAGS; }
 Grid                    { return WORD_GRID; }
 Groups                  { return WORD_GROUPS; }
 Layer                   { return WORD_LAYER; }
+Line                    { return WORD_LINE; }
 mil                     { return WORD_MIL; }
 mm                      { return WORD_MM; }
 NetList                 { return WORD_NETLIST; }

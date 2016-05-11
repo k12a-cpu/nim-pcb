@@ -155,10 +155,18 @@ type
     group2: int
     flags: set[ObjectFlag]
   
+  Line* = tuple
+    point1: Vector
+    point2: Vector
+    thickness: Dimension
+    clearance: Dimension
+    flags: set[ObjectFlag]
+  
   Layer* = tuple
     number: int
     name: string
     flags: string
+    lines: seq[Line]
   
   NetConnection* = tuple
     elementName: string
@@ -299,6 +307,7 @@ proc init*(layer: var Layer) =
   layer.number = 0
   layer.name = ""
   layer.flags = ""
+  layer.lines = @[]
 
 proc init*(conn: var NetConnection) =
   conn.elementName = ""

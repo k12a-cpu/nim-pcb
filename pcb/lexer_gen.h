@@ -330,7 +330,7 @@ extern int nimpcb_yylex (void);
 #undef YY_DECL
 #endif
 
-#line 67 "pcb/lexer.l"
+#line 68 "pcb/lexer.l"
 
 
 #line 337 "pcb/lexer_gen.h"

@@ -29,6 +29,7 @@
 %token WORD_GRID
 %token WORD_GROUPS
 %token WORD_LAYER
+%token WORD_LINE
 %token WORD_MIL
 %token WORD_MM
 %token WORD_NET
@@ -111,7 +112,7 @@ l_items
     ;
 
 l_item
-    : WORD_LAYER // dummy
+    : line_item
     ;
 
 n_items_opt
@@ -255,6 +256,15 @@ layer_item
         { nimpcb_process_layer_start($3, $4, ""); }
       l_items_opt ')'
         { nimpcb_process_layer_end(); }
+    ;
+
+line_item
+    : WORD_LINE '[' dimension_new dimension_new dimension_new dimension_new dimension_new dimension_new object_flags ']'
+        { nimpcb_process_line($3, $4, $5, $6, $7, $8, $9); }
+    | WORD_LINE '(' dimension_old dimension_old dimension_old dimension_old dimension_old dimension_old object_flags ')'
+        { nimpcb_process_line($3, $4, $5, $6, $7, $8, $9); }
+    | WORD_LINE '(' dimension_old dimension_old dimension_old dimension_old dimension_old object_flags ')'
+        { nimpcb_process_line($3, $4, $5, $6, $7, 0, $8); }
     ;
 
 net_item

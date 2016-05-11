@@ -212,6 +212,23 @@ proc rope(rats: seq[Rat]): Rope =
       rope("]\n"),
     ]
 
+proc rope(lines: seq[Line]): Rope =
+  for line in lines:
+    result = &[
+      result,
+      rope("    Line("),
+      rope(line.point1),
+      rope(" "),
+      rope(line.point2),
+      rope(" "),
+      rope(line.thickness),
+      rope(" "),
+      rope(line.clearance),
+      rope(" "),
+      rope(0),
+      rope(")\n"),
+    ]
+
 proc rope(layers: seq[Layer]): Rope =
   for layer in layers:
     result = &[
@@ -223,7 +240,7 @@ proc rope(layers: seq[Layer]): Rope =
       rope(" "),
       stringRope(layer.flags),
       rope(") (\n"),
-      # blah
+      rope(layer.lines),
       rope(")\n"),
     ]
 

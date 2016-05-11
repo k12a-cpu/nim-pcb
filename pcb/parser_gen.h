@@ -64,23 +64,24 @@ extern int nimpcb_yydebug;
     WORD_GRID = 266,
     WORD_GROUPS = 267,
     WORD_LAYER = 268,
-    WORD_MIL = 269,
-    WORD_MM = 270,
-    WORD_NET = 271,
-    WORD_NETLIST = 272,
-    WORD_PAD = 273,
-    WORD_PCB = 274,
-    WORD_PIN = 275,
-    WORD_POLYAREA = 276,
-    WORD_RAT = 277,
-    WORD_STYLES = 278,
-    WORD_SYMBOL = 279,
-    WORD_SYMBOLLINE = 280,
-    WORD_THERMAL = 281,
-    STRING = 282,
-    CHAR = 283,
-    INTEGER = 284,
-    FLOAT = 285
+    WORD_LINE = 269,
+    WORD_MIL = 270,
+    WORD_MM = 271,
+    WORD_NET = 272,
+    WORD_NETLIST = 273,
+    WORD_PAD = 274,
+    WORD_PCB = 275,
+    WORD_PIN = 276,
+    WORD_POLYAREA = 277,
+    WORD_RAT = 278,
+    WORD_STYLES = 279,
+    WORD_SYMBOL = 280,
+    WORD_SYMBOLLINE = 281,
+    WORD_THERMAL = 282,
+    STRING = 283,
+    CHAR = 284,
+    INTEGER = 285,
+    FLOAT = 286
   };
 #endif
 
@@ -97,7 +98,7 @@ union NIMPCB_YYSTYPE
     double fval;
     uint32_t u32val;
 
-#line 101 "pcb/parser_gen.h" /* yacc.c:1909  */
+#line 102 "pcb/parser_gen.h" /* yacc.c:1909  */
 };
 
 typedef union NIMPCB_YYSTYPE NIMPCB_YYSTYPE;

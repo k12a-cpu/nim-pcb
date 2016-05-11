@@ -208,6 +208,16 @@ proc processLayerEnd() {.cdecl, exportc: "nimpcb_process_layer_end".} =
   # echo "nimpcb_process_layer_end"
   thePCB.layers.add(theLayer)
 
+proc processLine(x1, y1, x2, y2, thickness, clearance: int, flags: uint32) {.cdecl, exportc: "nimpcb_process_line".} =
+  # echo "nimpcb_process_line"
+  theLayer.lines.add((
+    point1: (x: Dimension(x1), y: Dimension(y1)),
+    point2: (x: Dimension(x2), y: Dimension(y2)),
+    thickness: Dimension(thickness),
+    clearance: Dimension(clearance),
+    flags: decodeObjectFlags(flags, ofcLine),
+  ))
+
 proc processNetStart(name, style: cstring) {.cdecl, exportc: "nimpcb_process_net_start".} =
   # echo "nimpcb_process_net_start"
   theNet.init()

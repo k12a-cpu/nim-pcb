@@ -12,6 +12,12 @@ proc mfindElement*(pcb: var PCB, name: string): var Element =
       return element
   raise newException(KeyError, "no element named '" & name & "' exists in the layout")
 
+proc mfindLayer*(pcb: var PCB, name: string): var Layer =
+  for layer in pcb.layers.mitems():
+    if layer.name == name:
+      return layer
+  raise newException(KeyError, "no layer named '" & name & "' exists in the layout")
+
 proc rotateCW(vec: var Vector) =
   swap(vec.x, vec.y)
   vec.x = -vec.x
