@@ -315,6 +315,40 @@ proc init*(symbol: var Symbol) =
   symbol.space = Dimension(0)
   symbol.lines = @[]
 
+proc init*(elementArc: var ElementArc) =
+  elementArc.center.init()
+  elementArc.hozRadius = Dimension(0)
+  elementArc.vertRadius = Dimension(0)
+  elementArc.startAngle = 0
+  elementArc.sweepAngle = 0
+  elementArc.thickness = Dimension(0)
+
+proc init*(elementLine: var ElementLine) =
+  elementLine.point1.init()
+  elementLine.point2.init()
+  elementLine.thickness = Dimension(0)
+
+proc init*(pad: var Pad) =
+  pad.point1.init()
+  pad.point2.init()
+  pad.metalThickness = Dimension(0)
+  pad.clearance = Dimension(0)
+  pad.maskThickness = Dimension(0)
+  pad.name = ""
+  pad.number = ""
+  pad.flags = {}
+
+proc init*(pin: var Pin) =
+  pin.center.init()
+  pin.metalDiameter = Dimension(0)
+  pin.clearance = Dimension(0)
+  pin.maskDiameter = Dimension(0)
+  pin.drillDiameter = Dimension(0)
+  pin.name = ""
+  pin.number = ""
+  pin.flags = {}
+  pin.thermals = @[]
+
 proc init*(element: var Element) =
   element.flags = {}
   element.desc = ""
@@ -336,6 +370,17 @@ proc init*(rat: var Rat) =
   rat.point2.init()
   rat.group2 = 0
   rat.flags = {}
+
+proc init*(line: var Line) =
+  line.point1.init()
+  line.point2.init()
+  line.thickness = Dimension(0)
+  line.clearance = Dimension(0)
+  line.flags = {}
+
+proc init*(polygon: var Polygon) =
+  polygon.flags = {}
+  polygon.vertices = @[]
 
 proc init*(layer: var Layer) =
   layer.number = 0
