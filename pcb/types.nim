@@ -244,6 +244,34 @@ proc `/`*(a: Vector, b: int): Vector {.noSideEffect.} =
 proc `-`*(a: Vector): Vector {.noSideEffect.} =
   (x: -a.x, y: -a.y)
 
+proc `+=`*(a: var Dimension, b: Dimension) =
+  a = Dimension(int(a) + int(b))
+
+proc `-=`*(a: var Dimension, b: Dimension) =
+  a = Dimension(int(a) - int(b))
+
+proc `*=`*(a: var Dimension, b: int) =
+  a = Dimension(int(a) * b)
+
+proc `/=`*(a: var Dimension, b: int) =
+  a = Dimension(int(a) / b)
+
+proc `+=`*(a: var Vector, b: Vector) =
+  a.x += b.x
+  a.y += b.y
+
+proc `-=`*(a: var Vector, b: Vector) =
+  a.x -= b.x
+  a.y -= b.y
+
+proc `*=`*(a: var Vector, b: int) =
+  a.x *= b
+  a.y *= b
+
+proc `/=`*(a: var Vector, b: int) =
+  a.x /= b
+  a.y /= b
+
 proc mil*(x: float): Dimension {.noSideEffect.} =
   Dimension(x * 100.0)
 
