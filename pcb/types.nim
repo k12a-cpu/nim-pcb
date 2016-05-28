@@ -3,10 +3,10 @@ import tables
 
 type
   Dimension* = distinct int
-  
+
   Vector* = tuple
     x, y: Dimension
-  
+
   PCBFlag* = enum
     pfShowNumber
     pfLocalRef
@@ -30,7 +30,7 @@ type
     pfOnlyNames
     pfNewFullPoly
     pfHideNames
-  
+
   ObjectFlag* = enum
     ofPin
     ofVia
@@ -69,13 +69,13 @@ type
     ofcPolygon
     ofcRat
     ofcVia
-  
+
   TextDirection* = enum
     leftToRight
     bottomToTop
     rightToLeft
     topToBottom
-  
+
   DRC* = tuple
     bloat: Dimension
     shrink: Dimension
@@ -83,23 +83,23 @@ type
     silk: Dimension
     drill: Dimension
     ring: Dimension
-  
+
   Grid* = tuple
     step: float
     offsetX: Dimension
     offsetY: Dimension
     visible: bool
-  
+
   SymbolLine* = tuple
     point1: Vector
     point2: Vector
     thickness: Dimension
-  
+
   Symbol* = tuple
     ch: char
     space: Dimension
     lines: seq[SymbolLine]
-  
+
   ElementArc* = tuple
     center: Vector
     hozRadius: Dimension
@@ -107,12 +107,12 @@ type
     startAngle: int
     sweepAngle: int
     thickness: Dimension
-  
+
   ElementLine* = tuple
     point1: Vector
     point2: Vector
     thickness: Dimension
-  
+
   Pad* = tuple
     point1: Vector
     point2: Vector
@@ -122,7 +122,7 @@ type
     name: string
     number: string
     flags: set[ObjectFlag]
-  
+
   Pin* = tuple
     center: Vector
     metalDiameter: Dimension
@@ -133,7 +133,7 @@ type
     number: string
     flags: set[ObjectFlag]
     thermals: seq[int]
-  
+
   Element* = tuple
     flags: set[ObjectFlag]
     desc: string
@@ -148,41 +148,41 @@ type
     lines: seq[ElementLine]
     pads: seq[Pad]
     pins: seq[Pin]
-  
+
   Rat* = tuple
     point1: Vector
     group1: int
     point2: Vector
     group2: int
     flags: set[ObjectFlag]
-  
+
   Line* = tuple
     point1: Vector
     point2: Vector
     thickness: Dimension
     clearance: Dimension
     flags: set[ObjectFlag]
-  
+
   Polygon* = tuple
     flags: set[ObjectFlag]
     vertices: seq[Vector]
-  
+
   Layer* = tuple
     number: int
     name: string
     flags: string
     lines: seq[Line]
     polygons: seq[Polygon]
-  
+
   NetConnection* = tuple
     elementName: string
     pinNumber: string
-  
+
   Net* = tuple
     name: string
     style: string
     connections: seq[NetConnection]
-  
+
   PCB* = tuple
     fileVersion: int
     name: string

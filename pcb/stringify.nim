@@ -323,7 +323,7 @@ proc rope*(pcb: PCB): Rope =
     rope("FileVersion["),
     rope(pcb.fileVersion),
     rope("]\n"),
-    
+
     rope("PCB["),
     stringRope(pcb.name),
     rope(" "),
@@ -331,7 +331,7 @@ proc rope*(pcb: PCB): Rope =
     rope(" "),
     rope(pcb.height),
     rope("]\n"),
-    
+
     rope("Grid["),
     rope(pcb.grid.step),
     rope(" "),
@@ -341,15 +341,15 @@ proc rope*(pcb: PCB): Rope =
     rope(" "),
     boolRope(pcb.grid.visible),
     rope("]\n"),
-    
+
     rope("PolyArea["),
     rope(pcb.minPolyArea),
     rope("]\n"),
-    
+
     rope("Thermal["),
     rope(pcb.thermalFingerScale),
     rope("]\n"),
-    
+
     rope("DRC["),
     rope(pcb.drc.bloat),
     rope(" "),
@@ -363,19 +363,19 @@ proc rope*(pcb: PCB): Rope =
     rope(" "),
     rope(pcb.drc.ring),
     rope("]\n"),
-    
+
     rope("Flags("),
     rope(pcb.flags),
     rope(")\n"),
-    
+
     rope("Groups("),
     stringRope(pcb.groups),
     rope(")\n"),
-    
+
     rope("Styles["),
     stringRope(pcb.styles),
     rope("]\n"),
-    
+
     rope(pcb.symbols),
     rope(pcb.attributes),
     rope(pcb.elements),
