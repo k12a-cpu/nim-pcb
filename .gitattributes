@@ -1,0 +1,3 @@
+# Exclude auto-generated C files from Github's language statistics
+pcb/*_gen.c linguist-vendored
+pcb/*_gen.h linguist-vendored
